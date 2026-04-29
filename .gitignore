@@ -2,10 +2,15 @@
 .venv/
 __pycache__/
 *.pyc
+*.pkl
 .conda/
-.anaconda/
 cache_data_*
 .bash_profile
 .CFUserTextEncoding
 .condarc
 keyring
+*.lock
+*.pid
+*.ini
+*.tool
+assistant.json
