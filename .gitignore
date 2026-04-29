@@ -1,0 +1,11 @@
+.DS_Store
+.venv/
+__pycache__/
+*.pyc
+.conda/
+.anaconda/
+cache_data_*
+.bash_profile
+.CFUserTextEncoding
+.condarc
+keyring
