@@ -132,6 +132,44 @@ Open your browser and navigate to `http://127.0.0.1:5000` to use the prediction 
 
 ---
 
+## Model Performance
+
+The model is a Logistic Regression classifier, evaluated with **stratified 10-fold cross-validation** and then on a held-out test set of **1,409 customers**.
+
+### Overall Results (Test Set)
+
+| Metric | Score |
+| ------ | ----- |
+| Accuracy | 80.7% |
+| Macro F1-score | 0.74 |
+| ROC-AUC | 0.84 |
+
+### Cross-Validation (10 folds)
+
+| Metric | Mean | Std. Deviation |
+| ------ | ---- | -------------- |
+| ROC-AUC | 0.846 | ± 0.015 |
+| Accuracy | 80.2% | ± 0.013 |
+
+Scores stayed consistent across folds (accuracy between 77.7% and 82.1%), which suggests the model generalizes well and doesn't depend on one particular data split.
+
+### Classification Report
+
+| Class | Precision | Recall | F1-score | Support |
+| ----- | --------- | ------ | -------- | ------- |
+| 0 (Stayed) | 0.85 | 0.89 | 0.87 | 1035 |
+| 1 (Churned) | 0.66 | 0.57 | 0.61 | 374 |
+| **Macro avg** | 0.75 | 0.73 | 0.74 | 1409 |
+| **Weighted avg** | 0.80 | 0.81 | 0.80 | 1409 |
+
+### Key Observations
+
+- The dataset is imbalanced (about 26% of customers churn), so accuracy alone can be misleading. Macro F1 and ROC-AUC give a fairer picture.
+- The model identifies about **57% of customers who actually churn** (recall) and is correct about **66%** of the time when it predicts churn (precision).
+- Possible improvements: handling class imbalance (class weights or SMOTE), tuning the decision threshold to raise churn recall, and trying tree-based models such as Random Forest or XGBoost.
+
+---
+
 ## Contributing
 
 Pull requests are welcome! For major changes, please open an issue first to discuss what you'd like to change.
